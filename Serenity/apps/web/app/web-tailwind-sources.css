@@ -1,0 +1,3 @@
+/* Tailwind v4: scan only this app (not all monorepo apps) to avoid Turbopack/CSS ↔ page rebuild loops. */
+@source "./**/*.{ts,tsx}";
+@source "../components/**/*.{ts,tsx}";

@@ -1,0 +1,54 @@
+name: backend tests
+
+# Runs the five model-independent test files (decision, signal-floor,
+# ratelimit, auth, persistence) on every push and PR touching the backend.
+# test_onnx_path.py is skipped here -- it needs the ~100MB model artifacts,
+# which are gitignored on purpose (see backend/.gitignore) and are not
+# fetched by this workflow. Run it locally after copying artifacts/ in, or
+# extend this workflow with a step that pulls them from wherever you host
+# them (object storage, a release asset) if you want it covered here too.
+#
+# This is what makes test 11 in the ship-readiness list actually true: the
+# test files existed before this workflow, but nothing ran them automatically
+# and a bad edit could ship silently. Now a bad edit fails the PR.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-tests.yml"
+  pull_request:
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-tests.yml"
+  workflow_dispatch:   # manual trigger, for checking this workflow itself
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run test suite
+        # SERENITY_ENV is deliberately unset/dev here: config.py's production
+        # checks (item 4 in the ship list) would otherwise refuse to import in
+        # this environment, since none of the production secrets are set on a
+        # CI runner and shouldn't be.
+        env:
+          SERENITY_ENC_KEY: "dGVzdC1vbmx5LWtleS1kby1ub3QtdXNlLWluLXByb2Q="
+          SERENITY_JWT_SECRET: "ci-test-secret-not-for-production"
+        run: python run_tests.py

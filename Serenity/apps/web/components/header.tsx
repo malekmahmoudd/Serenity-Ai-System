@@ -1,0 +1,93 @@
+"use client";
+
+import { Cannabis } from 'lucide-react';
+import Link from "next/link";
+import { Button } from "@workspace/ui/components/button";
+import { ThemeToggle } from "./Theme-toggle";
+import { SignInButton } from "./auth/sign-in-button";
+import { useState } from "react";
+import { X, Menu } from "lucide-react";
+import { debugNav } from "@/lib/debug";
+
+export default function Header() {
+    const navItems = [
+        { href: "/features", label: "Features" },
+        { href: "/about", label: "About SerenityX" },
+      ];
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  return (  
+    <div className="w-full fixed top-0 z-[100] isolate border-b border-primary/10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="relative max-w-6xl mx-auto px-4">
+        <div className="flex h-16 items-center justify-between">
+          <Link
+            href="/"
+            className="relative z-[1] flex items-center space-x-2 transition-opacity hover:opacity-80"
+            onClick={() => debugNav("Header logo →", "/")}
+          >
+            <Cannabis className="h-7 w-7 text-green-500 animate-pulse-gentle" />
+            <div className="flex flex-col">
+              <span className="font-semibold text-lg bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                SerenityX
+              </span>
+              <span className="text-xs dark:text-muted-foreground">
+                Your mental health Companion{" "}
+              </span>
+            </div>
+          </Link>
+
+          <div className="flex items-center gap-4">
+            <nav className="hidden md:flex items-center space-x-1">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="relative z-[1] px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group"
+                  onClick={() => debugNav("Header nav →", item.href)}
+                >
+                  {item.label}
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                </Link>
+              ))}
+            </nav>
+            <div className="relative z-[1] flex items-center gap-3">
+              <ThemeToggle />
+              <SignInButton />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
+              </Button>
+            </div>
+          </div>
+        </div>
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <div className="md:hidden border-t border-primary/10">
+            <nav className="flex flex-col space-y-1 py-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-primary/5 rounded-md transition-colors"
+                  onClick={() => {
+                    debugNav("Header mobile nav →", item.href);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        )}
+      </header>
+    </div>
+  );
+}

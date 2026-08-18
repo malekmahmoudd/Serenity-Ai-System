@@ -1,0 +1,6 @@
+/* [project]/apps/web/app/web-tailwind-sources.css [app-client] (css) */
+@source "./**/*.{ts,tsx}";
+
+@source "../components/**/*.{ts,tsx}";
+
+/*# sourceMappingURL=apps_web_app_web-tailwind-sources_css_bad6b30c._.single.css.map*/

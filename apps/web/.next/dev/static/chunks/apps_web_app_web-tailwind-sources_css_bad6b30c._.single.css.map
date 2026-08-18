@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/apps/web/app/web-tailwind-sources.css"],"sourcesContent":["/* Tailwind v4: scan only this app (not all monorepo apps) to avoid Turbopack/CSS ↔ page rebuild loops. */\r\n@source \"./**/*.{ts,tsx}\";\r\n@source \"../components/**/*.{ts,tsx}\";\r\n"],"names":[],"mappings":"AACA;;AACA"}}]
+}
