@@ -12,6 +12,7 @@ import { debugNav } from "@/lib/debug";
 export default function Header() {
     const navItems = [
         { href: "/features", label: "Features" },
+        { href: "/games", label: "Calm" },
         { href: "/about", label: "About SerenityX" },
       ];
     const [isMenuOpen, setIsMenuOpen] = useState(false);
