@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 
 import "@workspace/ui/globals.css";
 import "./web-tailwind-sources.css";
@@ -8,16 +9,6 @@ import { cn } from "@workspace/ui/lib/utils";
 import Header from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ThemeShell, SessionShell } from "@/components/providers";
-
-const fontSans = Geist({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-});
 
 export const metadata: Metadata = {
   title: "SerenityX",
@@ -35,8 +26,8 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn(
         "antialiased font-sans",
-        fontSans.variable,
-        fontMono.variable,
+        GeistSans.variable,
+        GeistMono.variable,
       )}
     >
       <body>

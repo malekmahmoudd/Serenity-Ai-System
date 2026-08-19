@@ -146,7 +146,7 @@ export default function DashboardPage() {
         {/* STATS */}
         <Card>
           <CardHeader>
-            <CardTitle>Today's Overview</CardTitle>
+            <CardTitle>Today&apos;s Overview</CardTitle>
           </CardHeader>
           <CardContent>
             <p>Therapy Sessions: {dailyStats.mindfulnessCount}</p>
