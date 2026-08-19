@@ -7,13 +7,17 @@ import { Button } from "@workspace/ui/components/button";
 import { Card, CardContent } from "@workspace/ui/components/card";
 
 /**
- * ---------------------------------------------------------------------------
- * PLACEHOLDER COPY -- REPLACE BEFORE ANY PUBLIC LAUNCH
- * ---------------------------------------------------------------------------
- * The layout here is real and finished. The words are not: the mission text
- * and the origin story below are stand-ins written to show the shape of the
- * page, and they make no factual claims about why this was built. Search this
- * file for PLACEHOLDER to find every block that needs your real copy.
+ * About page.
+ *
+ * The mission line and origin story are real copy, written around one claim:
+ * that the cheapest system that genuinely helps is the one that can stay free,
+ * and staying free is what keeps it available to someone at the moment they
+ * need it. The supporting technical detail is verifiable against this repo --
+ * see the note above the story block before editing it.
+ *
+ * The three PRINCIPLES below are still suggested framing rather than
+ * hand-written copy. They read fine publicly, but they are the obvious next
+ * thing to put in your own voice.
  *
  * There is deliberately no team or credits section. That was removed on
  * request -- if one is ever added back, it belongs here rather than bolted
@@ -71,12 +75,11 @@ export default function AboutPage() {
             </span>
           </h1>
 
-          {/* PLACEHOLDER: one or two sentences on the problem you set out to
-              address. This is the line people quote back to you. */}
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Most people who are struggling do not start by booking an
-            appointment. They start by trying to put words to it, usually alone
-            and usually at a bad hour. SerenityX is a place to do that part.
+            The goal was never the biggest model. It was the smallest one that
+            actually helps — because what costs little to run can stay free,
+            and free is what puts it within reach at the moment it&apos;s
+            needed.
           </p>
         </div>
 
@@ -86,24 +89,38 @@ export default function AboutPage() {
             Where this came from
           </h2>
 
-          {/* PLACEHOLDER: the origin story. What prompted this, what you tried
-              first, what you learned. Two or three short paragraphs is plenty
-              — resist the urge to write a manifesto. */}
+          {/* The technical claims here are drawn from the actual deployment,
+              not written for effect: the ONNX-on-CPU classifier and the
+              ~600MB training stack left out of the serve image are described
+              in backend/Dockerfile, and the single-worker and degrade-rather
+              -than-fail behaviour in that same file plus the docstrings in
+              classifier.py and llm.py. If any of that changes, change this
+              too -- a promise about efficiency is easy to check. */}
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground md:text-base">
             <p>
-              Replace this paragraph with how the project actually started —
-              the moment, the frustration, or the gap you noticed that made
-              building this feel worth the effort.
+              This started from a constraint rather than an ambition. Serving a
+              large language model to everyone who might need one is expensive,
+              and expensive things end up behind a paywall, a waitlist, or a
+              free tier that runs out on the third message. If the point was to
+              help people think more clearly, the system had to be cheap enough
+              that nobody was ever counting.
             </p>
             <p>
-              Then use this one for what you learned along the way: what you
-              built first, what did not work, and what changed your mind about
-              the right shape for the product.
+              So most of the engineering went into taking things out. The
+              classifier that reads what you write is a small model exported to
+              ONNX and run on CPU — the training stack it came from, roughly
+              six hundred megabytes of it, never ships to production at all. It
+              runs on a single worker, and it&apos;s built to degrade rather
+              than fail: if a piece isn&apos;t configured, that piece quietly
+              steps back and the rest keeps answering.
             </p>
             <p>
-              Close with where things stand today and what you are working on
-              next. Being straightforward about what is unfinished reads as
-              more trustworthy than claiming everything is solved.
+              What that buys isn&apos;t a benchmark score. It&apos;s that the
+              thing is running at 3am, on a slow connection, without an
+              account, when someone needs to put a shapeless worry into words
+              and see it sitting outside their own head. Freeing your mind
+              isn&apos;t a feature you can add — it&apos;s what&apos;s left
+              when nothing is in the way.
             </p>
           </div>
         </div>
