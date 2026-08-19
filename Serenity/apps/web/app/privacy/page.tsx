@@ -90,11 +90,8 @@ export default function PrivacyPage() {
         <h2 className="mb-2 text-lg font-semibold">What Serenity is not</h2>
         <p className="text-sm leading-relaxed text-muted-foreground">
           It is not a therapist, a doctor, or a crisis service, and it cannot
-          contact anyone on your behalf. The model that reads your messages is
-          small and gets things wrong often — roughly half the time on the kind
-          of conversational writing people actually use. Anything it suggests is
-          a starting point for a conversation with a qualified person, never a
-          diagnosis.
+          contact anyone on your behalf. Anything it suggests is a starting
+          point for a conversation with a qualified person, never a diagnosis.
         </p>
       </section>
 

@@ -13,13 +13,15 @@ import { useEffect, useState } from "react";
  * returns them to the home page -- consent that cannot be withheld is not
  * consent.
  *
- * WHY THE ACCURACY NUMBER IS IN HERE
- * ----------------------------------
- * The classifier scored 0.42 top-1 accuracy on conversational input in the
- * frozen evaluation. A user who knows that reads a suggested category as a
- * prompt to reflect; a user who does not may read it as a finding. Saying it
- * plainly is uncomfortable and it is the most important sentence on the
- * screen.
+ * WHY THIS STILL SAYS "NEVER A DIAGNOSIS"
+ * ---------------------------------------
+ * The explicit accuracy figure that used to sit on this screen was removed
+ * by product decision. The scope clause below is what remains of that
+ * disclosure, and it is load-bearing: the classifier can surface labels as
+ * consequential as "suicidal" or "schizophrenia" from a few sentences of
+ * writing, and it suggests categories rather than establishing findings. A
+ * user who reads a suggestion as a clinical result is the failure mode this
+ * sentence exists to prevent -- do not drop it as well.
  *
  * STORAGE KEY
  * -----------
@@ -93,12 +95,8 @@ export default function ConsentModal({
           </h3>
           <p className="text-sm leading-relaxed text-slate-300">
             Serenity uses a small AI model to spot patterns in what you
-            describe.{" "}
-            <strong className="text-amber-300">
-              It&apos;s wrong roughly half the time
-            </strong>
-            , so anything it mentions is a starting point for a conversation
-            with someone qualified — never a diagnosis.
+            describe. Anything it mentions is a starting point for a
+            conversation with someone qualified — never a diagnosis.
           </p>
         </section>
 
