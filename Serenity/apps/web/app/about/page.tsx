@@ -10,11 +10,14 @@ import { Card, CardContent } from "@workspace/ui/components/card";
  * ---------------------------------------------------------------------------
  * PLACEHOLDER COPY -- REPLACE BEFORE ANY PUBLIC LAUNCH
  * ---------------------------------------------------------------------------
- * The layout here is real and finished. The words are not: the mission text,
- * the origin story and the team entries below are stand-ins written to show
- * the shape of the page, and they make no factual claims about who built this
- * or why. Search this file for PLACEHOLDER to find every block that needs
- * your real copy.
+ * The layout here is real and finished. The words are not: the mission text
+ * and the origin story below are stand-ins written to show the shape of the
+ * page, and they make no factual claims about why this was built. Search this
+ * file for PLACEHOLDER to find every block that needs your real copy.
+ *
+ * There is deliberately no team or credits section. That was removed on
+ * request -- if one is ever added back, it belongs here rather than bolted
+ * onto the footer.
  *
  * Anything describing what the product DOES should stay consistent with
  * /features and /privacy -- those pages are written against the actual
@@ -49,14 +52,6 @@ const PRINCIPLES: Principle[] = [
     description:
       "Success is not someone using this forever. It is someone finding the words for what they are dealing with, and taking those words to a person who can help.",
   },
-];
-
-// PLACEHOLDER: replace with the real team, or delete the whole section if you
-// would rather not name people publicly.
-const TEAM: { name: string; role: string }[] = [
-  { name: "Your name here", role: "Role" },
-  { name: "Your name here", role: "Role" },
-  { name: "Your name here", role: "Role" },
 ];
 
 export default function AboutPage() {
@@ -146,41 +141,6 @@ export default function AboutPage() {
                 </Card>
               );
             })}
-          </div>
-        </div>
-
-        {/* ---------------------------------------------------------- team */}
-        <div className="mt-24">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
-              Who built it
-            </h2>
-            {/* PLACEHOLDER: swap in the real names and roles, or remove this
-                whole section. */}
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-              A short line about the team goes here.
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {TEAM.map((member, index) => (
-              <Card
-                key={`${member.name}-${index}`}
-                className="border-border/50 bg-card/50 backdrop-blur-sm"
-              >
-                <CardContent className="p-6 text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-primary/20 bg-gradient-to-br from-primary/10 to-secondary/10 text-lg font-semibold text-primary">
-                    {member.name.charAt(0)}
-                  </div>
-                  <h3 className="font-semibold tracking-tight">
-                    {member.name}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {member.role}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
 
