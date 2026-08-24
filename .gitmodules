@@ -1,0 +1,4 @@
+[submodule "Serenity/backend"]
+	path = Serenity/backend
+	url = https://github.com/malekmahmoudd/Serenity-Backend.git
+	branch = main

@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Python virtual environments
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Build output
+.next/
+out/
+build/
+dist/
+.turbo/
+.vercel/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Model artifacts (large binaries; see backend repo)
+*.onnx
+*.keras
+*.h5
+*.pkl
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.pem
+npm-debug.log*
